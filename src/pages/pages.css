@@ -1,0 +1,101 @@
+
+
+/* buildpage */
+
+.build {
+    display: flex;
+    margin: 50px;
+}
+
+.build img {
+    height: 35rem;
+    
+}
+
+.build-content h2{
+    margin-bottom: 5%;
+    margin-top: 20%;
+}
+
+/* EXTERIOR COLOR */
+
+.color-button{
+    padding: 30px;
+    margin: 1.5rem;
+    border-radius: 50%;
+}
+
+.black {
+    background-color: black;
+}
+
+.gray {
+    background-color: gray;
+}
+
+.red {
+    background-color: rgb(185, 11, 11);
+}
+
+.white {
+    background-color: white;
+}
+
+/* STRIPES */
+
+.stripes-form {
+    margin-top: 5rem;
+}
+
+.stripes-button {
+    padding: 30px;
+    margin: 1.5rem;
+}
+
+.black-stripes {
+    background-color: black;
+}
+
+.gray-stripes {
+    background-color: gray;
+}
+.red-stripes {
+    background-color:red;
+    
+}
+.white-stripes {
+    background-color: white;
+    
+}
+.blue-stripes {
+    background-color: rgb(21, 21, 163);
+}
+
+/* RIMS */
+
+.rims-form {
+    margin-top: 5rem;
+}
+
+.rims-info {
+    display: flex;
+}
+
+.rims-info h3 {
+    display: flex;
+    align-items: center;
+}
+
+.rims-button {
+    padding: 30px;
+    margin: 1.5rem;
+    border-radius: 20%;
+}
+
+.silver-rims {
+    background-color: silver;
+}
+
+.black-rims {
+    background-color: black;
+}
