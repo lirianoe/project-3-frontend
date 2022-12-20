@@ -7,6 +7,7 @@
     
 }
 
+
 :root{
     --mainColor: black;
     --secondaryColor: white;
@@ -37,17 +38,27 @@ header .nav-btn {
     
 }
 
-.logo {
-    color: white;
-    text-decoration: none;
+.logo img{
+    width: 80px;
+    
+    
 }
 
 .navComponents {
     color: white;
     text-decoration: none;
     margin: 2rem;
+    font-weight: 700;
 }
 
+.logout {
+    background-color: black;
+    color: white;
+    border: none;
+    font-size: 17px;
+    font-weight: 700;
+    margin-left: 25px;
+}
 
 /* header */
 
@@ -67,16 +78,19 @@ header .nav-btn {
     font-size: 7rem;
    color: white;
    font-family: Arial, Helvetica, sans-serif;
+   font-weight: 700;
+   text-shadow: 1px 1px 5px black;
 
 }
 
 .viewVehicle {
     text-decoration: none;
-    border: 2px solid;
+    border: 3px solid;
+    box-shadow: 1px 1px 5px black;
     border-color: white;
     color: white;
-    padding: 10px;
-    font-size: 1.2rem;
+    padding: 15px;
+    font-size: 1.8rem;
     
 }
 
@@ -84,6 +98,9 @@ header .nav-btn {
     background-color: white;
     color: black;
     border: none;
+    text-shadow: none;
+     border: 3px solid;
+    border-color: white;
 }
 
 /* meetNewCar */
@@ -171,6 +188,13 @@ header .nav-btn {
     nav {
         font-size: 1.5rem;
         
+    }
+
+    .logout {
+        font-size: 23px;
+        font-weight: 700;
+        margin-right: 25px;
+        margin-top: 25px;
     }
 
     .viewVehicle:hover {

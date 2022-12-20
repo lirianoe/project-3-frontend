@@ -13,7 +13,7 @@ const MeetNewCar = () => {
                 <div className='meet-content'>
                     <h3 className='car-name'>2023 Dodge Durango SRT</h3>
                     
-                        <Link className='meetBtn' to='/meet-durango'>Meet Durango</Link>
+                        <a className='meetBtn' href='https://www.dodge.com/durango.html'>Meet Durango</a>
                     
                 </div>
             </div>
@@ -21,9 +21,9 @@ const MeetNewCar = () => {
             <div className='meetCar fade'>
                 <img src={bmw} alt='car' className='carImg'/>
                 <div className='meet-content'>
-                    <h3 className='car-name'>2023 BMW X6</h3>
+                    <h3 className='car-name'>2022 BMW X6</h3>
                     <div>
-                        <Link className='meetBtn' to='/meet-bmw'>Meet BMW</Link>
+                        <a className='meetBtn' href='https://www.bmwusa.com/vehicles/x-models/x6/sports-activity-coupe/overview.html'>Meet BMW</a>
                     </div>
                 </div>
             </div>
@@ -31,9 +31,9 @@ const MeetNewCar = () => {
             <div className='meetCar fade'>
                 <img src={challenger} alt='car' className='carImg'/>
                 <div className='meet-content'>
-                    <h3 className='car-name'>2023 Dodge Challenger</h3>
+                    <h3 className='car-name'>2022 Dodge Challenger</h3>
                     <div>
-                        <Link className='meetBtn' to='/meet-challenger'>Meet Challenger</Link>
+                        <a className='meetBtn' href='https://www.dodge.com/challenger.html'>Meet Challenger</a>
                     </div>
                 </div>
             </div>

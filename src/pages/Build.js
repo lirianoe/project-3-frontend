@@ -14,7 +14,7 @@ const Build = () => {
     
 
     const [carArray, setCarArray] = useState([])
-    const [carObject, setCarObject] = useState(null)
+    // const [carObject, setCarObject] = useState(null)
 
     const colorOptions = ['black', 'gray', 'red', 'white']
     const stripeOptions = ['gray-stripes', 'black-stripes', 'white-stripes', 'blue-stripes', 'red-stripes']
@@ -29,25 +29,25 @@ const Build = () => {
     const updateColorState = color => e => {
         e.preventDefault()
         setColorState(color)
-        let searchQuery = `durango_${color}_${stripeState}_${rimState}`
-            const foundCar = carArray.find((thisCar) => thisCar.optionString === searchQuery)
-            setCarObject(foundCar)
+        // let searchQuery = `durango_${color}_${stripeState}_${rimState}`
+        //     const foundCar = carArray.find((thisCar) => thisCar.optionString === searchQuery)
+        //     setCarObject(foundCar)
     }
 
     const updateStripeState = stripe=> e => {
         e.preventDefault()
         setStripeState(stripe)
-        let searchQuery = `durango_${colorState}_${stripe}_${rimState}`
-            const foundCar = carArray.find((thisCar) => thisCar.optionString === searchQuery)
-            setCarObject(foundCar)
+        // let searchQuery = `durango_${colorState}_${stripe}_${rimState}`
+        //     const foundCar = carArray.find((thisCar) => thisCar.optionString === searchQuery)
+        //     setCarObject(foundCar)
     }
 
     const updateRimState = rim => e => {
         e.preventDefault()
         setRimState(rim)
-        let searchQuery = `durango_${colorState}_${stripeState}_${rim}`
-        const foundCar = carArray.find((thisCar) => thisCar.optionString === searchQuery)
-        setCarObject(foundCar)
+        // let searchQuery = `durango_${colorState}_${stripeState}_${rim}`
+        // const foundCar = carArray.find((thisCar) => thisCar.optionString === searchQuery)
+        // setCarObject(foundCar)
     }
 
 
@@ -60,9 +60,9 @@ const Build = () => {
         axios.get('http://localhost:3001/car/durango')
         .then((durango) => {
             setCarArray(durango.data)
-            let searchQuery = `durango_${colorState}_${stripeState}_${rimState}`
-            const preset = durango.data.find((thisCar) => thisCar.optionString === searchQuery)
-            setCarObject(preset)
+            // let searchQuery = `durango_${colorState}_${stripeState}_${rimState}`
+            // const preset = durango.data.find((thisCar) => thisCar.optionString === searchQuery)
+            // setCarObject(preset)
         })
         .catch((err) => {
             console.log(err)
@@ -71,21 +71,37 @@ const Build = () => {
 
     
     
-    
+    let searchQuery = `durango_${colorState}_${stripeState}_${rimState}`
+    const foundCar = carArray.find((thisCar) => thisCar.optionString === searchQuery)
         
-    //let carObject = carArray.filter((thisCar) => thisCar.optionString === searchQuery)
+    
 
-
+    const addToFavorite = e => {
+        e.preventDefault()
+        console.log(foundCar)
+        const storedToken = localStorage.getItem('authToken');
+        axios.post('https://localhost:3001/favorite/myFavorites', { myCar: foundCar._id
+        }, {
+            headers: {
+                Authorization: `Bearer ${storedToken}`
+            }
+        })
+        .then( axiosResponse => {
+            console.log(axiosResponse.data)
+        })
+        .catch(err => console.log(err))
+        
+    }
 
    
     return (
         <div>
            
-        {carObject ? (  <div>
+        {foundCar ? (  <div>
             <div className='build'>
                 <div className='titleImg'>
                 <h1>2022 Durango SRT</h1>
-                <img src={carObject.imageURL} alt="Durango Image" /> 
+                <img src={foundCar.imageURL} alt="Durango Image" /> 
                 </div>
                 
                 <div className='build-content'>
@@ -129,7 +145,12 @@ const Build = () => {
                             </div>
                         )
                     })}
+
+                    
                     </form>
+
+                    <button onClick={addToFavorite} className='add-favorites'>Add to Favorites</button>
+
                     </div>
                  
                 </div>

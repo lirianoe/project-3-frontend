@@ -8,12 +8,11 @@ import Login from './pages/Login';
 import Build from './pages/Build';
 import AllVehicles from './pages/AllVehicles';
 import Favorites from './pages/Favorites';
-import MeetChallenger from './pages/MeetChallenger';
-import MeetBmw from './pages/MeetBmw';
-import MeetDurango from './pages/MeetDurango';
+
 
 // components
 import Navbar from './components/Navbar';
+import Signup from './pages/Signup';
 
 
 
@@ -31,11 +30,10 @@ function App() {
      <Routes>
       <Route path='/' element={<HomePage/>}/>
       <Route path='/login' element={<Login/>}/>
+      <Route path='/signup' element={<Signup/>}/>
       <Route path='/favorites' element={<Favorites/>}/>
       <Route path='/vehicles' element={<AllVehicles/>}/>
-      <Route path='/meet-durango' element={<MeetDurango/>}/>
-      <Route path='/meet-bmw' element={<MeetBmw/>}/>
-      <Route path='/meet-challenger'element={<MeetChallenger/>}/>
+
       <Route path='/build' element={<Build/>}/>
      </Routes>
     </div>
