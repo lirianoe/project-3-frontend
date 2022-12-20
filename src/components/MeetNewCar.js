@@ -8,7 +8,7 @@ import challenger from '../media/meetchallenger.jpeg'
 const MeetNewCar = () => {
     return (
         <div className='meet'>
-            <div className='meetCar'>
+            <div className='meetCar fade'>
                 <img src={durango} alt='car' className='carImg'/>
                 <div className='meet-content'>
                     <h3 className='car-name'>2023 Dodge Durango SRT</h3>
@@ -18,7 +18,7 @@ const MeetNewCar = () => {
                 </div>
             </div>
 
-            <div className='meetCar'>
+            <div className='meetCar fade'>
                 <img src={bmw} alt='car' className='carImg'/>
                 <div className='meet-content'>
                     <h3 className='car-name'>2023 BMW X6</h3>
@@ -28,7 +28,7 @@ const MeetNewCar = () => {
                 </div>
             </div>
 
-            <div className='meetCar'>
+            <div className='meetCar fade'>
                 <img src={challenger} alt='car' className='carImg'/>
                 <div className='meet-content'>
                     <h3 className='car-name'>2023 Dodge Challenger</h3>
@@ -37,7 +37,9 @@ const MeetNewCar = () => {
                     </div>
                 </div>
             </div>
-            
+            <a class="prev" onclick="plusSlides(-1)"></a>
+            <a class="next" onclick="plusSlides(1)"></a>
+
         </div>
     );
 }

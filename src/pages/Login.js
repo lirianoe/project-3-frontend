@@ -1,9 +1,9 @@
-
+import Discover from "../components/Discover";
 
 const Login = () => {
     return (
         <div>
-            <h1>Login</h1>
+           <Discover/>
         </div>
     );
 }

@@ -17,6 +17,8 @@ const Build = () => {
     const [carObject, setCarObject] = useState(null)
 
     const colorOptions = ['black', 'gray', 'red', 'white']
+    const stripeOptions = ['gray-stripes', 'black-stripes', 'white-stripes', 'blue-stripes', 'red-stripes']
+    const rimOptions = ['silver-rims', 'black-rims']
 
 
 
@@ -29,6 +31,22 @@ const Build = () => {
         setColorState(color)
         let searchQuery = `durango_${color}_${stripeState}_${rimState}`
             const foundCar = carArray.find((thisCar) => thisCar.optionString === searchQuery)
+            setCarObject(foundCar)
+    }
+
+    const updateStripeState = stripe=> e => {
+        e.preventDefault()
+        setStripeState(stripe)
+        let searchQuery = `durango_${colorState}_${stripe}_${rimState}`
+            const foundCar = carArray.find((thisCar) => thisCar.optionString === searchQuery)
+            setCarObject(foundCar)
+    }
+
+    const updateRimState = rim => e => {
+        e.preventDefault()
+        setRimState(rim)
+        let searchQuery = `durango_${colorState}_${stripeState}_${rim}`
+        const foundCar = carArray.find((thisCar) => thisCar.optionString === searchQuery)
         setCarObject(foundCar)
     }
 
@@ -62,7 +80,7 @@ const Build = () => {
    
     return (
         <div>
-            <Navbar/>
+           
         {carObject ? (  <div>
             <div className='build'>
                 <div className='titleImg'>
@@ -86,11 +104,15 @@ const Build = () => {
                     <h1>STRIPES</h1>
                     <form>
                     
+                    {stripeOptions.map(s => {
+                        return <button className={`stripes-button ${s}`} onClick={updateStripeState(s)}></button>
+                    })}
+{/* 
                     <button className='stripes-button gray-stripes'></button>
                     <button className='stripes-button black-stripes'></button>
                     <button className='stripes-button white-stripes'></button>
                     <button className='stripes-button blue-stripes'></button>
-                    <button className='stripes-button red-stripes'></button>
+                    <button className='stripes-button red-stripes'></button> */}
                     </form>
                    </div>
 
@@ -98,14 +120,15 @@ const Build = () => {
                     <div className='rims-form'>
                    <h1>RIMS</h1>
                     <form>
-                    <div className='rims-info'>
-                         <button className='rims-button silver-rims'></button>
-                         <h3>SILVER RIMS</h3>
-                    </div>
-                    <div className='rims-info'>
-                        <button className='rims-button black-rims'></button>
-                        <h3>BLACK RIMS</h3>
-                    </div>
+
+                    {rimOptions.map(s => {
+                        return (
+                            <div className='rims-info'>
+                            <button className={`rims-button ${s}`} onClick={updateRimState(s)}></button>
+                            <h3></h3>
+                            </div>
+                        )
+                    })}
                     </form>
                     </div>
                  
