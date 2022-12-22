@@ -3,11 +3,12 @@ import React from 'react';
 import { useState, useEffect } from 'react'
 import './pages.css'
 import Navbar from '../components/Navbar';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const BuildEdit = () => {
 
     const { favoriteId } = useParams()
+    const navigate = useNavigate()
 
     // const [colorOptions, setColorOptions] = useState(['black', 'gray', 'red', 'white'])
 
@@ -20,7 +21,7 @@ const BuildEdit = () => {
     const [carObject, setCarObject] = useState(null)
 
     const colorOptions = ['black', 'gray', 'red', 'white']
-    const stripeOptions = ['gray-stripes', 'black-stripes', 'white-stripes', 'blue-stripes', 'red-stripes']
+    const stripeOptions = ['gray-stripes', 'black-stripes', 'white-stripes', 'blue-stripes', 'red-stripes', 'none']
     const rimOptions = ['silver-rims', 'black-rims']
 
 
@@ -100,14 +101,17 @@ const BuildEdit = () => {
         e.preventDefault()
         //console.log(foundCar)
         const storedToken = localStorage.getItem('authToken');
-        axios.post('http://localhost:3001/favorite/myFavorites', { myCar: carObject._id
+        axios.put('http://localhost:3001/favorite/myFavorites', { 
+            myCar: carObject._id,
+            _id: favoriteId
         }, {
             headers: {
                 Authorization: `Bearer ${storedToken}`
             }
         })
         .then( axiosResponse => {
-            carObject._id = axiosResponse._id
+            console.log(axiosResponse.data)
+            navigate('/favorites')
         })
         .catch(err => console.log(err))
         
@@ -125,7 +129,7 @@ const BuildEdit = () => {
                 </div>
                 
                 <div className='build-content'>
-                    <h2>BUILD YOUR 2022 DURANGO SER 392 AWD</h2>
+                    <h2>BUILD YOUR 2022 DURANGO SRT 392 AWD</h2>
                    <div className='color-form'>
                     <h1>EXTERIOR COLORS</h1>
                     <form>

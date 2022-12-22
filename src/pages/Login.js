@@ -49,9 +49,9 @@ const Login = () => {
         <input value={state.password} type="password" name="password" id="passwordInput" placeholder="Password" onChange={updateState}/>
         </div>
   
-       
+       <p className="messageError">{error}</p>
         <button className="button">Log In</button>
-        <p>{error}</p>
+        
 
         <div className="signup-link">
         <p>You don't have an account? <span><Link to='/signup' className="a">Sign Up</Link></span></p>

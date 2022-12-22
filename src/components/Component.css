@@ -63,6 +63,11 @@ header .nav-btn {
 
 }
 
+nav {
+    display: flex;
+    margin-left: auto;
+}
+
 /* header */
 
 .head video{

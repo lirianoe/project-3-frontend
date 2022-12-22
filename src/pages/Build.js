@@ -2,11 +2,13 @@ import axios from 'axios';
 import React from 'react';
 import { useState, useEffect } from 'react'
 import './pages.css'
+import { useNavigate } from 'react-router-dom';
 
 import black from '../media/black-stripes.jpeg'
 
 const Build = () => {
 
+    const navigate = useNavigate()
     // const [colorOptions, setColorOptions] = useState(['black', 'gray', 'red', 'white'])
 
     const [ colorState, setColorState] = useState("black")
@@ -61,6 +63,7 @@ const Build = () => {
         axios.get('http://localhost:3001/car/durango')
         .then((durango) => {
             setCarArray(durango.data)
+            console.log(durango.data)
             // let searchQuery = `durango_${colorState}_${stripeState}_${rimState}`
             // const preset = durango.data.find((thisCar) => thisCar.optionString === searchQuery)
             // setCarObject(preset)
@@ -89,6 +92,8 @@ const Build = () => {
         })
         .then( axiosResponse => {
             console.log(axiosResponse.data)
+            navigate('/favorites')
+
         })
         .catch(err => console.log(err))
         
@@ -108,7 +113,7 @@ const Build = () => {
                 </div>
                 
                 <div className='build-content'>
-                    <h2>BUILD YOUR 2022 DURANGO SER 392 AWD</h2>
+                    <h2>BUILD YOUR 2022 DURANGO SRT 392 AWD</h2>
                     <div className='net-price'>
                     <h2>Your Build Summary</h2>
                 <h3>{foundCar.msrp} MSRP</h3>

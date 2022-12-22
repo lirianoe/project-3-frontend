@@ -9,11 +9,12 @@ import Build from './pages/Build';
 import BuildEdit from './pages/BuildEdit';
 import AllVehicles from './pages/AllVehicles';
 import Favorites from './pages/Favorites';
-import MeetDurango from './pages/MeetDurango';
+
 
 // components
 import Navbar from './components/Navbar';
 import Signup from './pages/Signup';
+import IsPrivate from './components/isPrivate';
 
 
 
@@ -32,10 +33,21 @@ function App() {
       <Route path='/' element={<HomePage/>}/>
       <Route path='/login' element={<Login/>}/>
       <Route path='/signup' element={<Signup/>}/>
-      <Route path='/favorites' element={<Favorites/>}/>
+      <Route path='/favorites' element={
+        <IsPrivate>
+          <Favorites/> 
+        </IsPrivate>
+     
+      
+      }/>
       <Route path='/vehicles' element={<AllVehicles/>}/>
-      <Route path='/durango' element={<MeetDurango/>}/>
-      <Route path='/build' element={<Build/>}/>
+      
+      <Route path='/build' element={
+        <IsPrivate>
+          <Build/>
+        </IsPrivate>
+      
+      }/>
       <Route path='/build/:favoriteId' element={<BuildEdit />}/>
      </Routes>
     </div>

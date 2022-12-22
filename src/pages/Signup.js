@@ -6,9 +6,10 @@ import { useNavigate } from 'react-router-dom';
 const Signup = () => {
     const navigate = useNavigate();
 
+    const [error, setError] = useState(null)
+
     const [state, setState] = useState({
-      email: '',
-      name: '',
+        email: '',
       password: ''
     });
   
@@ -25,7 +26,7 @@ const Signup = () => {
           console.log(axiosResponse.data)
           navigate('/login');
         })
-        .catch(err => console.log(err));
+        .catch(err => setError(err.response.data));
     }
 
     return (
@@ -40,7 +41,7 @@ const Signup = () => {
         <input  value={state.password} type="password" name="password" id="passwordInput" placeholder="Password" onChange={updateState}/>
         </div>
   
-       
+        <p className="messageError">{error}</p>
         <button className="button">Sign Up</button>
 
         <div class="signup-link">

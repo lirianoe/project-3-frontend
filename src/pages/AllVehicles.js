@@ -11,6 +11,9 @@ import durango from '../media/durango.jpeg'
 import charger from '../media/charger.jpeg'
 import challenger from '../media/challenger.jpeg'
 
+import { FaArrowLeft } from 'react-icons/fa'
+
+
 
 
 import { Link } from 'react-router-dom'
@@ -20,19 +23,19 @@ const AllVehicles = () => {
 
     let dodgeCars = [
         {
-            name: 'Durango',
+            name: 'Durango SRT 392',
             image: durango,
             msrp: '$70,295'
         },
         {
-            name: 'Charger',
+            name: 'Charger SRT Jailbreak',
             image: charger,
-            msrp: '$70,2'
+            msrp: '$89,135'
         },
         {
-            name: 'Challenger',
+            name: 'Challenger SRT Hellcat',
             image: challenger,
-            msrp: '$89,135'
+            msrp: '$70,835'
         }
     ]
 
@@ -95,6 +98,7 @@ let hyundaiCars = [
 
     return (
         <div className='all-vehicle'>
+             <Link className="arrowLeft" to={'/'}><FaArrowLeft/></Link>
             <h1>BUILD YOUR VEHICLE</h1>
             <div className='cars'>
                 <h2>DODGE</h2>
