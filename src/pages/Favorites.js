@@ -9,7 +9,7 @@ const Favorites = () => {
     const [favorites, setFavorites] = useState([])
 
     const getFavs = () => {
-        axios.get('http://localhost:3001/favorite/myFavorites', {
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/favorite/myFavorites`, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('authToken')}`
             }
@@ -28,7 +28,7 @@ const Favorites = () => {
 
     
     const deleteFavorite = (id) => {
-        axios.post('http://localhost:3001/favorite/myFavorites/delete', {
+        axios.post(`${process.env.REACT_APP_BACKEND_URL}/favorite/myFavorites/delete`, {
             _id: id
         }, {
             headers: {

@@ -64,8 +64,8 @@ const BuildEdit = () => {
         const storedToken = localStorage.getItem('authToken');
 
         Promise.all([
-            axios.get('http://localhost:3001/car/durango'),
-            axios.get(`http://localhost:3001/favorite/myFavorites/${favoriteId}`, {
+            axios.get(`${process.env.REACT_APP_BACKEND_URL}/car/durango`),
+            axios.get(`${process.env.REACT_APP_BACKEND_URL}/favorite/myFavorites/${favoriteId}`, {
                 headers: {
                     Authorization: `Bearer ${storedToken}`
                 }
@@ -101,7 +101,7 @@ const BuildEdit = () => {
         e.preventDefault()
         //console.log(foundCar)
         const storedToken = localStorage.getItem('authToken');
-        axios.put('http://localhost:3001/favorite/myFavorites', { 
+        axios.put(`${process.env.REACT_APP_BACKEND_URL}/favorite/myFavorites`, { 
             myCar: carObject._id,
             _id: favoriteId
         }, {

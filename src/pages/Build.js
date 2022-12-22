@@ -60,7 +60,7 @@ const Build = () => {
 
 
     useEffect(()=> {
-        axios.get('http://localhost:3001/car/durango')
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/car/durango`)
         .then((durango) => {
             setCarArray(durango.data)
             console.log(durango.data)
@@ -84,7 +84,7 @@ const Build = () => {
         e.preventDefault()
         console.log(foundCar)
         const storedToken = localStorage.getItem('authToken');
-        axios.post('http://localhost:3001/favorite/myFavorites', { myCar: foundCar._id
+        axios.post(`${process.env.REACT_APP_BACKEND_URL}/favorite/myFavorites`, { myCar: foundCar._id
         }, {
             headers: {
                 Authorization: `Bearer ${storedToken}`
