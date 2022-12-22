@@ -6,9 +6,10 @@ import { Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import Login from './pages/Login';
 import Build from './pages/Build';
+import BuildEdit from './pages/BuildEdit';
 import AllVehicles from './pages/AllVehicles';
 import Favorites from './pages/Favorites';
-
+import MeetDurango from './pages/MeetDurango';
 
 // components
 import Navbar from './components/Navbar';
@@ -33,8 +34,9 @@ function App() {
       <Route path='/signup' element={<Signup/>}/>
       <Route path='/favorites' element={<Favorites/>}/>
       <Route path='/vehicles' element={<AllVehicles/>}/>
-
+      <Route path='/durango' element={<MeetDurango/>}/>
       <Route path='/build' element={<Build/>}/>
+      <Route path='/build/:favoriteId' element={<BuildEdit />}/>
      </Routes>
     </div>
   );

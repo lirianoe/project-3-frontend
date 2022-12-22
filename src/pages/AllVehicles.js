@@ -7,11 +7,34 @@ import tucson from '../media/tucson.png'
 import seltos from '../media/seltos.png'
 import sorento from '../media/sorento.png'
 import telluride from '../media/telluride.png'
+import durango from '../media/durango.jpeg'
+import charger from '../media/charger.jpeg'
+import challenger from '../media/challenger.jpeg'
+
 
 
 import { Link } from 'react-router-dom'
 
+
 const AllVehicles = () => {
+
+    let dodgeCars = [
+        {
+            name: 'Durango',
+            image: durango,
+            msrp: '$70,295'
+        },
+        {
+            name: 'Charger',
+            image: charger,
+            msrp: '$70,2'
+        },
+        {
+            name: 'Challenger',
+            image: challenger,
+            msrp: '$89,135'
+        }
+    ]
 
     let kiaCars = [
         {
@@ -73,6 +96,23 @@ let hyundaiCars = [
     return (
         <div className='all-vehicle'>
             <h1>BUILD YOUR VEHICLE</h1>
+            <div className='cars'>
+                <h2>DODGE</h2>
+                <div className='car'>
+                    {dodgeCars.map(dodge => {
+                        return (
+                            <div className='singleCar'>
+                               <img src={dodge.image} alt='car'/>
+                               <div>
+                                 <h3>{dodge.name}</h3> 
+                                 <h3 className='msrp'>{dodge.msrp} <span>initial MSRP</span></h3> 
+                                 <Link to='/build' className='build-bttn'>BUILD</Link>
+                                 </div>
+                            </div>
+                        )
+                    })}
+                </div>
+            </div>
             <div className='cars'>
                 <h2>KIA</h2>
                 <div className='car'>

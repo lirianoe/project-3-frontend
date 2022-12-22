@@ -8,6 +8,8 @@ import tucson from '../media/tucson.png'
 import seltos from '../media/seltos.png'
 import sorento from '../media/sorento.png'
 import telluride from '../media/telluride.png'
+var Carousel = require('react-responsive-carousel').Carousel;
+
 
 const Discover = () => {
 
@@ -67,25 +69,6 @@ const Discover = () => {
 
   
 
-    return (
-        <div className='allCars'>
-             {allCars.map(car => {
-            return (
-                <div className='slide hi-slide'>
-            <div className='hi-prev'></div>
-            <div className='hi-next'></div>
-            <ul>
-                <li>
-                    <img src={car.image} />
-                </li>
-            </ul>
-        </div>
-            )
-        })}
-        
-        </div>
-       
-    );
 }
 
 export default Discover;

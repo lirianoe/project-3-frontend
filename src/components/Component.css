@@ -1,11 +1,6 @@
 /* navbar */
 
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    
-}
+
 
 
 :root{
@@ -19,7 +14,7 @@ header{
     justify-content: space-between;
     height: 80px;
     width: 100%;
-    padding: 0 2rem;
+    padding: 0 2px;
     background-color: var(--mainColor);
    
 }
@@ -40,31 +35,40 @@ header .nav-btn {
 
 .logo img{
     width: 80px;
-    
+    margin-left: 40px;
     
 }
 
 .navComponents {
     color: white;
     text-decoration: none;
-    margin: 2rem;
+    margin: 30px;
     font-weight: 700;
+    font-size: 20px;
+   
 }
 
 .logout {
     background-color: black;
     color: white;
     border: none;
-    font-size: 17px;
+    font-size: 20px;
     font-weight: 700;
-    margin-left: 25px;
+    margin-left: 30px;
+}
+
+.nav-star:hover {
+    color: rgb(153, 153, 153);
+  
+
 }
 
 /* header */
 
 .head video{
     width: 100%;
-   height: auto;
+   height: 100%;
+  
 }
 
 .head {
@@ -75,7 +79,7 @@ header .nav-btn {
     position: absolute;
     top: 40%;
     left: 5%;
-    font-size: 7rem;
+    font-size: 100px;
    color: white;
    font-family: Arial, Helvetica, sans-serif;
    font-weight: 700;
@@ -110,6 +114,10 @@ header .nav-btn {
     justify-content: space-evenly;
     padding: 3rem;
     background-color: black;
+    margin-top: -1%;
+    
+   
+   
 }
 
 .meetCar {
@@ -121,6 +129,7 @@ header .nav-btn {
 
 .meetCar .carImg{
     width: 95%;
+  
 }
 
 .meet-content {
@@ -140,8 +149,18 @@ header .nav-btn {
     border: 2px solid;
     border-color: white;
     color: white;
-    
+    font-size: 18px;
+    font-weight: 700;
     padding: 15px;
+}
+
+.meetBtn:hover {
+    background-color: white;
+    color: black;
+    border: none;
+    text-shadow: none;
+     border: 3px solid;
+    border-color: white;
 }
 
 /* DISCOVER */

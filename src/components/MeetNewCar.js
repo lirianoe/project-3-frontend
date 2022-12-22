@@ -11,7 +11,7 @@ const MeetNewCar = () => {
             <div className='meetCar fade'>
                 <img src={durango} alt='car' className='carImg'/>
                 <div className='meet-content'>
-                    <h3 className='car-name'>2023 Dodge Durango SRT</h3>
+                    <h3 className='car-name'>2022 Dodge Durango SRT</h3>
                     
                         <a className='meetBtn' href='https://www.dodge.com/durango.html'>Meet Durango</a>
                     

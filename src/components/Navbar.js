@@ -1,9 +1,10 @@
 import './Component.css';
 import { useRef } from 'react'
-import {FaBars, FaTimes} from "react-icons/fa";
+import {FaBars, FaTimes, FaStar} from "react-icons/fa";
 import { NavLink } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../context/auth.context';
+
 
 import logo from '../media/logo.png'
 
@@ -23,7 +24,7 @@ const Navbar = () => {
             
                 <nav ref={navRef}>
                     <NavLink to='/vehicles' className='navComponents'>Vehicles</NavLink>
-                    <NavLink to='favorites' className='navComponents'>Favorites</NavLink>
+                    <NavLink to='favorites' className='navComponents'><FaStar className='nav-star'/></NavLink>
 
                     {isLoggedIn && (
                         <button onClick={logOutUser} className='logout'>Logout</button>

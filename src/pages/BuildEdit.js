@@ -2,10 +2,12 @@ import axios from 'axios';
 import React from 'react';
 import { useState, useEffect } from 'react'
 import './pages.css'
+import Navbar from '../components/Navbar';
+import { useParams } from 'react-router-dom';
 
-import black from '../media/black-stripes.jpeg'
+const BuildEdit = () => {
 
-const Build = () => {
+    const { favoriteId } = useParams()
 
     // const [colorOptions, setColorOptions] = useState(['black', 'gray', 'red', 'white'])
 
@@ -15,10 +17,10 @@ const Build = () => {
     
 
     const [carArray, setCarArray] = useState([])
-    // const [carObject, setCarObject] = useState(null)
+    const [carObject, setCarObject] = useState(null)
 
     const colorOptions = ['black', 'gray', 'red', 'white']
-    const stripeOptions = ['gray-stripes', 'black-stripes', 'white-stripes', 'blue-stripes', 'red-stripes', 'none']
+    const stripeOptions = ['gray-stripes', 'black-stripes', 'white-stripes', 'blue-stripes', 'red-stripes']
     const rimOptions = ['silver-rims', 'black-rims']
 
 
@@ -30,25 +32,25 @@ const Build = () => {
     const updateColorState = color => e => {
         e.preventDefault()
         setColorState(color)
-        // let searchQuery = `durango_${color}_${stripeState}_${rimState}`
-        //     const foundCar = carArray.find((thisCar) => thisCar.optionString === searchQuery)
-        //     setCarObject(foundCar)
+        let searchQuery = `durango_${color}_${stripeState}_${rimState}`
+            const foundCar = carArray.find((thisCar) => thisCar.optionString === searchQuery)
+            setCarObject(foundCar)
     }
 
     const updateStripeState = stripe=> e => {
         e.preventDefault()
         setStripeState(stripe)
-        // let searchQuery = `durango_${colorState}_${stripe}_${rimState}`
-        //     const foundCar = carArray.find((thisCar) => thisCar.optionString === searchQuery)
-        //     setCarObject(foundCar)
+        let searchQuery = `durango_${colorState}_${stripe}_${rimState}`
+            const foundCar = carArray.find((thisCar) => thisCar.optionString === searchQuery)
+            setCarObject(foundCar)
     }
 
     const updateRimState = rim => e => {
         e.preventDefault()
         setRimState(rim)
-        // let searchQuery = `durango_${colorState}_${stripeState}_${rim}`
-        // const foundCar = carArray.find((thisCar) => thisCar.optionString === searchQuery)
-        // setCarObject(foundCar)
+        let searchQuery = `durango_${colorState}_${stripeState}_${rim}`
+        const foundCar = carArray.find((thisCar) => thisCar.optionString === searchQuery)
+        setCarObject(foundCar)
     }
 
 
@@ -58,9 +60,26 @@ const Build = () => {
 
 
     useEffect(()=> {
-        axios.get('http://localhost:3001/car/durango')
-        .then((durango) => {
+        const storedToken = localStorage.getItem('authToken');
+
+        Promise.all([
+            axios.get('http://localhost:3001/car/durango'),
+            axios.get(`http://localhost:3001/favorite/myFavorites/${favoriteId}`, {
+                headers: {
+                    Authorization: `Bearer ${storedToken}`
+                }
+            })
+        ])
+        .then((axiosResArray) => {
+            const fav = axiosResArray[1];
+            const durango = axiosResArray[0];
+
             setCarArray(durango.data)
+
+            let searchQuery = fav.data.myCar.optionString
+            const preset = durango.data.find((thisCar) => thisCar.optionString === searchQuery)
+            setCarObject(preset)
+
             // let searchQuery = `durango_${colorState}_${stripeState}_${rimState}`
             // const preset = durango.data.find((thisCar) => thisCar.optionString === searchQuery)
             // setCarObject(preset)
@@ -72,23 +91,23 @@ const Build = () => {
 
     
     
-    let searchQuery = `durango_${colorState}_${stripeState}_${rimState}`
-    const foundCar = carArray.find((thisCar) => thisCar.optionString === searchQuery)
+    // let searchQuery = `durango_${colorState}_${stripeState}_${rimState}`
+    // const foundCar = carArray.find((thisCar) => thisCar.optionString === searchQuery)
         
     
 
-    const addToFavorite = e => {
+    const updateFavorite = e => {
         e.preventDefault()
-        console.log(foundCar)
+        //console.log(foundCar)
         const storedToken = localStorage.getItem('authToken');
-        axios.post('http://localhost:3001/favorite/myFavorites', { myCar: foundCar._id
+        axios.post('http://localhost:3001/favorite/myFavorites', { myCar: carObject._id
         }, {
             headers: {
                 Authorization: `Bearer ${storedToken}`
             }
         })
         .then( axiosResponse => {
-            console.log(axiosResponse.data)
+            carObject._id = axiosResponse._id
         })
         .catch(err => console.log(err))
         
@@ -98,22 +117,15 @@ const Build = () => {
     return (
         <div>
            
-        {foundCar ? (  <div>
+        {carObject ? (  <div>
             <div className='build'>
-                
                 <div className='titleImg'>
                 <h1>2022 Durango SRT</h1>
-                <img src={foundCar.imageURL} alt="Durango Image" /> 
-                
+                <img src={carObject.imageURL} alt="Durango Image" /> 
                 </div>
                 
                 <div className='build-content'>
                     <h2>BUILD YOUR 2022 DURANGO SER 392 AWD</h2>
-                    <div className='net-price'>
-                    <h2>Your Build Summary</h2>
-                <h3>{foundCar.msrp} MSRP</h3>
-                </div>
-
                    <div className='color-form'>
                     <h1>EXTERIOR COLORS</h1>
                     <form>
@@ -130,7 +142,6 @@ const Build = () => {
                     
                     {stripeOptions.map(s => {
                         return <button className={`stripes-button ${s}`} onClick={updateStripeState(s)}></button>
-                      
                     })}
 {/* 
                     <button className='stripes-button gray-stripes'></button>
@@ -150,7 +161,6 @@ const Build = () => {
                         return (
                             <div className='rims-info'>
                             <button className={`rims-button ${s}`} onClick={updateRimState(s)}></button>
-                            
                             <h3></h3>
                             </div>
                         )
@@ -159,7 +169,7 @@ const Build = () => {
                     
                     </form>
 
-                    <button onClick={addToFavorite} className='add-favorites'>Add to Favorites</button>
+                    <button onClick={updateFavorite} className='add-favorites'>Update Favorites</button>
 
                     </div>
                  
@@ -172,4 +182,4 @@ const Build = () => {
     );
 }
 
-export default Build;
+export default BuildEdit;
