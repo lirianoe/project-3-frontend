@@ -138,12 +138,12 @@
 .car {
     display: flex;
    
+   
     
 }
 
 .car img{
-    height: 50%;
-    margin: 0;
+    width: 70%;
     padding: 0;
 }
 

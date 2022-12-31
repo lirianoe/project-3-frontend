@@ -39,24 +39,6 @@ const AllVehicles = () => {
         }
     ]
 
-    let kiaCars = [
-        {
-        name: 'Seltos',
-        image: seltos,
-        msrp: '$25,990'
-    },
-    {
-        name: 'Sorento',
-        image: sorento,
-        msrp: '$29,990'
-    },
-    {
-        name: 'Telluride',
-        image: telluride,
-        msrp: '$35,690'
-    },
-
-]
 
 let toyotaCars = [
     {
@@ -110,23 +92,6 @@ let hyundaiCars = [
                                <div>
                                  <h3>{dodge.name}</h3> 
                                  <h3 className='msrp'>{dodge.msrp} <span>initial MSRP</span></h3> 
-                                 <Link to='/build' className='build-bttn'>BUILD</Link>
-                                 </div>
-                            </div>
-                        )
-                    })}
-                </div>
-            </div>
-            <div className='cars'>
-                <h2>KIA</h2>
-                <div className='car'>
-                    {kiaCars.map(kia => {
-                        return (
-                            <div className='singleCar'>
-                               <img src={kia.image} alt='car'/>
-                               <div>
-                                 <h3>{kia.name}</h3> 
-                                 <h3 className='msrp'>{kia.msrp} <span>initial MSRP</span></h3> 
                                  <Link to='/build' className='build-bttn'>BUILD</Link>
                                  </div>
                             </div>
