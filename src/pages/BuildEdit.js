@@ -10,13 +10,10 @@ const BuildEdit = () => {
     const { favoriteId } = useParams()
     const navigate = useNavigate()
 
-    // const [colorOptions, setColorOptions] = useState(['black', 'gray', 'red', 'white'])
-
     const [ colorState, setColorState] = useState("black")
     const [stripeState, setStripeState] = useState('none')
     const [rimState, setRimState] = useState('black-rims')
     
-
     const [carArray, setCarArray] = useState([])
     const [carObject, setCarObject] = useState(null)
 
@@ -24,11 +21,6 @@ const BuildEdit = () => {
     const stripeOptions = ['gray-stripes', 'black-stripes', 'white-stripes', 'blue-stripes', 'red-stripes', 'none']
     const rimOptions = ['silver-rims', 'black-rims']
 
-
-
-
-    // let searchQuery = `durango_${colorState}_${stripeState}_${rimState}`
-    // const foundCar = carArray.find((thisCar) => thisCar.optionString === searchQuery)
 
     const updateColorState = color => e => {
         e.preventDefault()
@@ -55,11 +47,6 @@ const BuildEdit = () => {
     }
 
 
-//    let searchQuery = `durango_${colorState}_${stripeState}_${rimState}`
-//    const object = carArray.filter((thisCar) => thisCar.optionString === searchQuery)
-    // setCarObject(preset[0])
-
-
     useEffect(()=> {
         const storedToken = localStorage.getItem('authToken');
 
@@ -81,19 +68,12 @@ const BuildEdit = () => {
             const preset = durango.data.find((thisCar) => thisCar.optionString === searchQuery)
             setCarObject(preset)
 
-            // let searchQuery = `durango_${colorState}_${stripeState}_${rimState}`
-            // const preset = durango.data.find((thisCar) => thisCar.optionString === searchQuery)
-            // setCarObject(preset)
         })
         .catch((err) => {
             console.log(err)
         })
     }, [])
 
-    
-    
-    // let searchQuery = `durango_${colorState}_${stripeState}_${rimState}`
-    // const foundCar = carArray.find((thisCar) => thisCar.optionString === searchQuery)
         
     
 
@@ -147,12 +127,6 @@ const BuildEdit = () => {
                     {stripeOptions.map(s => {
                         return <button className={`stripes-button ${s}`} onClick={updateStripeState(s)}></button>
                     })}
-{/* 
-                    <button className='stripes-button gray-stripes'></button>
-                    <button className='stripes-button black-stripes'></button>
-                    <button className='stripes-button white-stripes'></button>
-                    <button className='stripes-button blue-stripes'></button>
-                    <button className='stripes-button red-stripes'></button> */}
                     </form>
                    </div>
 
